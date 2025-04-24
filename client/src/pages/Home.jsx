@@ -17,7 +17,15 @@ function Home() {
                 <span className="social-box me-2">
                   <i className="fa-solid fa-location-dot"></i>
                 </span>
-                <a href="#" className="fw-medium text-decoration-none">
+                <a
+                  href="#"
+                  className="fw-medium text-decoration-none"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginLeft: "1px",
+                  }}
+                >
                   1/3A, Sangati Colony, Netaji Nagar, Tollygunge, Kolkata-700092
                 </a>
               </div>
@@ -252,7 +260,16 @@ function Home() {
                   alt="Shillong"
                 />
                 <h5 className="mb-0">Shillong</h5>
-                <a href="#">Details Package</a>
+                <a
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    color: "blue",
+                    marginLeft: "1px",
+                  }}
+                >
+                  Details Package...
+                </a>
               </div>
             </div>
             <div className="col-lg-4 col-6">
@@ -263,7 +280,16 @@ function Home() {
                   alt="Cherrapunjee"
                 />
                 <h5 className="mb-0">Cherrapunjee</h5>
-                <a href="#">Details Package</a>
+                <a
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    color: "blue",
+                    marginLeft: "1px",
+                  }}
+                >
+                  Details Package...
+                </a>
               </div>
             </div>
             <div className="col-lg-4 col-6">
@@ -274,7 +300,16 @@ function Home() {
                   alt="Kaziranga"
                 />
                 <h5 className="mb-0">Kaziranga</h5>
-                <a href="#">Details Package</a>
+                <a
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    color: "blue",
+                    marginLeft: "1px",
+                  }}
+                >
+                  Details Package...
+                </a>
               </div>
             </div>
             <div className="col-lg-4 col-6">
@@ -285,7 +320,16 @@ function Home() {
                   alt="Tawang"
                 />
                 <h5 className="mb-0">Tawang</h5>
-                <a href="#">Details Package</a>
+                <a
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    color: "blue",
+                    marginLeft: "1px",
+                  }}
+                >
+                  Details Package...
+                </a>
               </div>
             </div>
             <div className="col-lg-4 col-6">
@@ -296,7 +340,16 @@ function Home() {
                   alt="Sittong"
                 />
                 <h5 className="mb-0">Sittong</h5>
-                <a href="#">Details Package</a>
+                <a
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    color: "blue",
+                    marginLeft: "1px",
+                  }}
+                >
+                  Details Package...
+                </a>
               </div>
             </div>
             <div className="col-lg-4 col-6">
@@ -307,7 +360,16 @@ function Home() {
                   alt="Pelling"
                 />
                 <h5 className="mb-0">Pelling</h5>
-                <a href="#">Details Package</a>
+                <a
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    color: "blue",
+                    marginLeft: "1px",
+                  }}
+                >
+                  Details Package...
+                </a>
               </div>
             </div>
           </div>
@@ -661,7 +723,7 @@ function Home() {
       {/* <!-- Why us section end --> */}
 
       {/* <!-- Modal Enquire --> */}
-         <Touch/>
+      <Touch />
     </>
   );
 }

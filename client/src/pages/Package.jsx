@@ -14,7 +14,15 @@ function Package() {
                 <span className="social-box me-2">
                   <i className="fa-solid fa-phone-volume"></i>
                 </span>
-                <a href="tel:9062429969" className="fw-medium">
+                <a
+                  href="tel:9062429969"
+                  className="fw-medium"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginLeft: "1px",
+                  }}
+                >
                   9062429969
                 </a>
               </div>
@@ -25,6 +33,11 @@ function Package() {
                 <a
                   href="mailto:enquiry@sevendimensiontravels.com"
                   className="fw-medium"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginLeft: "1px",
+                  }}
                 >
                   enquiry@sevendimensiontravels.com
                 </a>
@@ -148,9 +161,17 @@ function Package() {
               <div className="col-lg-7">
                 <h1>Tour Packages</h1>
                 <p className="mb-0 bread">
-                  <a href="index.html" className="my-primary-color">
+                  <Link
+                    to="/"
+                    className="my-primary-color"
+                    style={{
+                      textDecoration: "none",
+
+                      marginLeft: "1px",
+                    }}
+                  >
                     Home
-                  </a>{" "}
+                  </Link>{" "}
                   / Tour Packages
                 </p>
               </div>
@@ -401,7 +422,7 @@ function Package() {
       {/* <!-- Places section end --> */}
 
       {/* <!-- Modal Enquire --> */}
-        <Touch />
+      <Touch />
     </>
   );
 }

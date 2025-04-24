@@ -23,6 +23,7 @@ import './components/Whyus.jsx';
 import './components/Enquiry.jsx';
 import './components/Touch.jsx';
 import  './components/Cont.jsx';
+import  './components/Location.jsx';
 
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Touch from '../components/Touch';
 import Cont from '../components/Cont';
+import Location from '../components/Location';
 function Contact() {
   return (
     <>
@@ -14,7 +15,15 @@ function Contact() {
                 <span className="social-box me-2">
                   <i className="fa-solid fa-phone-volume"></i>
                 </span>
-                <a href="tel:9062429969" className="fw-medium">
+                <a
+                  href="tel:9062429969"
+                  className="fw-medium"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginLeft: "1px",
+                  }}
+                >
                   9062429969
                 </a>
               </div>
@@ -25,6 +34,11 @@ function Contact() {
                 <a
                   href="mailto:enquiry@sevendimensiontravels.com"
                   className="fw-medium"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginLeft: "1px",
+                  }}
                 >
                   enquiry@sevendimensiontravels.com
                 </a>
@@ -148,9 +162,17 @@ function Contact() {
               <div className="col-lg-7">
                 <h1>Contact</h1>
                 <p className="mb-0 bread">
-                  <a href="index.html" className="my-primary-color">
+                  <Link
+                    to="/"
+                    className="my-primary-color"
+                    style={{
+                      textDecoration: "none",
+
+                      marginLeft: "1px",
+                    }}
+                  >
                     Home
-                  </a>{" "}
+                  </Link>{" "}
                   / Contact
                 </p>
               </div>
@@ -161,25 +183,14 @@ function Contact() {
       {/* <!-- About section end --> */}
 
       {/* <!-- Contact section --> */}
-        <Cont/>
+      <Cont />
 
       {/* <!-- COntact section end --> */}
 
-      <section>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7373.340384625958!2d88.35603494490998!3d22.47902478191498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0270fb5636f039%3A0xa4c7782afb8b88c9!2sNetaji%20Nagar%2C%20Kolkata%2C%20West%20Bengal%2C%20India!5e0!3m2!1sen!2snp!4v1724995173241!5m2!1sen!2snp"
-          width="100%"
-          height="400"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Google Map"
-        ></iframe>
-      </section>
+      <Location />
 
       {/* <!-- Modal Enquire --> */}
-       <Touch/>
+      <Touch />
     </>
   );
 }

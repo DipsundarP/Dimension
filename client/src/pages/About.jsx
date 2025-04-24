@@ -13,7 +13,15 @@ function About() {
                 <span className="social-box me-2">
                   <i className="fa-solid fa-phone-volume"></i>
                 </span>
-                <a href="tel:9062429969" className="fw-medium">
+                <a
+                  href="tel:9062429969"
+                  className="fw-medium"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginLeft: "1px",
+                  }}
+                >
                   9062429969
                 </a>
               </div>
@@ -24,6 +32,11 @@ function About() {
                 <a
                   href="mailto:enquiry@sevendimensiontravels.com"
                   className="fw-medium"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginLeft: "1px",
+                  }}
                 >
                   enquiry@sevendimensiontravels.com
                 </a>
@@ -148,9 +161,17 @@ function About() {
               <div className="col-lg-7">
                 <h1>About Us</h1>
                 <p className="mb-0 bread">
-                  <a href="index.html" className="my-primary-color">
+                  <Link
+                    to="/"
+                    className="my-primary-color"
+                    style={{
+                      textDecoration: "none",
+
+                      marginLeft: "1px",
+                    }}
+                  >
                     Home
-                  </a>{" "}
+                  </Link>{" "}
                   / About Us
                 </p>
               </div>
@@ -489,7 +510,7 @@ function About() {
       {/* <!-- Why us section end --> */}
 
       {/* <!-- Modal Enquire --> */}
-       <Touch/>
+      <Touch />
     </>
   );
 }

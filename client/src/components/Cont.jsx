@@ -19,9 +19,7 @@ function Cont() {
         <div className="row">
           <div className="col-12 text-center">
             <h2 className="title">
-              
               <span>Contact Us</span>
-
             </h2>
           </div>
         </div>
@@ -141,7 +139,16 @@ function Cont() {
                 </div>
                 <div className="col-10">
                   <h6 className="mb-0">
-                    <a href="tel:9062429969">9062429969</a>
+                    <a
+                      href="tel:9062429969"
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        marginLeft: "1px",
+                      }}
+                    >
+                      9062429969
+                    </a>
                   </h6>
                 </div>
               </div>
@@ -156,7 +163,14 @@ function Cont() {
                 </div>
                 <div className="col-10">
                   <h6 className="mb-0">
-                    <a href="mailto:enquiry@sevendimensiontravels.com">
+                    <a
+                      href="mailto:enquiry@sevendimensiontravels.com"
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        marginLeft: "1px",
+                      }}
+                    >
                       enquiry@sevendimensiontravels.com
                     </a>
                   </h6>
