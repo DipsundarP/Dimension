@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Cont() {
   const [firstName, setFirstName] = useState("");
@@ -6,11 +7,71 @@ function Cont() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({ message: "", type: "" });
 
-  const handleSubmit = (e) => {
+  // Validate phone number format (10 digits)
+  const validatePhoneNumber = (phone) => /^[0-9]{10}$/.test(phone);
+
+  // Validate if fields are not empty
+  const validateForm = () => {
+    if (!firstName || !lastName || !phoneNumber || !emailAddress || !message) {
+      setStatus({
+        message: "Please fill all the fields.",
+        type: "error",
+      });
+      return false;
+    }
+    if (!validatePhoneNumber(phoneNumber)) {
+      setStatus({
+        message: "Please enter a valid 10-digit phone number.",
+        type: "error",
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ firstName, lastName, phoneNumber, emailAddress, message });
-    // You can also send the form data to your backend here
+    setStatus({ message: "", type: "" });
+
+    if (!validateForm()) return;
+
+    const formData = {
+      firstName,
+      lastName,
+      phoneNumber,
+      emailAddress,
+      message,
+    };
+
+    try {
+      setLoading(true);
+      // Ensure that your backend endpoint is correct and allows POST requests
+      const response = await axios.post(
+        "http://localhost:9000/contact",
+        formData
+      );
+      console.log("Response:", response.data);
+
+      setStatus({ message: "Message sent successfully!", type: "success" });
+
+      // Reset form fields after successful submission
+      setFirstName("");
+      setLastName("");
+      setPhoneNumber("");
+      setEmailAddress("");
+      setMessage("");
+    } catch (error) {
+      console.error("Form submission error:", error.response || error.message);
+      setStatus({
+        message: "Failed to send message. Please try again later.",
+        type: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -107,15 +168,28 @@ function Cont() {
                   </div>
 
                   <div className="col-12">
-                    <button type="submit" className="btn1">
-                      Submit Your Message
+                    <button type="submit" className="btn1" disabled={loading}>
+                      {loading ? "Submitting..." : "Submit Your Message"}
                     </button>
                   </div>
+
+                  {status.message && (
+                    <div className="col-12">
+                      <p
+                        className={`mt-2 mb-0 text-${
+                          status.type === "success" ? "success" : "danger"
+                        }`}
+                      >
+                        {status.message}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </form>
             </div>
           </div>
 
+          {/* Contact info section */}
           <div className="col-lg-6">
             <div className="info-contain">
               <div className="row align-items-center">

@@ -1,16 +1,64 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Touch() {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [countryCode, setCountryCode] = useState("India");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    countryCode: "India",
+    phone: "",
+    message: "",
+  });
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({ message: "", type: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const validatePhoneNumber = (phone) => /^[0-9]{10}$/.test(phone);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ fullName, email, countryCode, phone, message });
-    // You can handle sending form data here (e.g., API call)
+    setStatus({ message: "", type: "" });
+
+    if (!validatePhoneNumber(formData.phone)) {
+      setStatus({
+        message: "Please enter a valid 10-digit phone number.",
+        type: "error",
+      });
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        "http://localhost:9000/register",
+        formData
+      );
+      setStatus({ message: "Form submitted successfully!", type: "success" });
+
+      setFormData({
+        fullName: "",
+        email: "",
+        countryCode: "India",
+        phone: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      setStatus({
+        message: "Failed to submit form. Please try again later.",
+        type: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -20,7 +68,6 @@ function Touch() {
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       tabIndex="-1"
-      aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
       <div className="modal-dialog modal-lg modal-dialog-centered">
@@ -37,7 +84,7 @@ function Touch() {
                 <img
                   src="assets/images/modal-img.jpg"
                   className="img-fluid modal-img"
-                  alt="Modal"
+                  alt="Modal Visual"
                 />
               </div>
               <div className="col-md-6 ps-lg-0">
@@ -48,55 +95,76 @@ function Touch() {
                       <div className="col-12">
                         <input
                           type="text"
+                          name="fullName"
                           placeholder="Full Name"
                           className="form-control"
-                          value={fullName}
-                          onChange={(e) => setFullName(e.target.value)}
+                          value={formData.fullName}
+                          onChange={handleChange}
+                          required
                         />
                       </div>
                       <div className="col-12">
                         <input
                           type="email"
+                          name="email"
                           placeholder="Email Address"
                           className="form-control"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
                         />
                       </div>
                       <div className="col-12 d-flex">
                         <select
                           className="form-select me-3"
-                          value={countryCode}
-                          onChange={(e) => setCountryCode(e.target.value)}
+                          name="countryCode"
+                          value={formData.countryCode}
+                          onChange={handleChange}
                         >
                           <option value="India">IND (+91)</option>
-                          {/* You can add more countries if needed */}
                         </select>
                         <input
-                          type="text"
+                          type="tel"
+                          name="phone"
                           placeholder="Phone Number"
                           className="form-control"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
+                          value={formData.phone}
+                          onChange={handleChange}
+                          required
                         />
                       </div>
                       <div className="col-12">
                         <textarea
-                          style={{ resize: "none" }}
-                          cols="5"
+                          name="message"
                           rows="3"
                           className="form-control"
                           placeholder="Your message"
-                          value={message}
-                          onChange={(e) => setMessage(e.target.value)}
+                          style={{ resize: "none" }}
+                          value={formData.message}
+                          onChange={handleChange}
                         ></textarea>
                       </div>
                       <div className="col-12">
-                        <button type="submit" className="btn1">
-                          Submit{" "}
+                        <button
+                          type="submit"
+                          className="btn1"
+                          disabled={loading}
+                        >
+                          {loading ? "Submitting..." : "Submit"}{" "}
                           <i className="fa-regular fa-paper-plane ps-1"></i>
                         </button>
                       </div>
+                      {status.message && (
+                        <div className="col-12">
+                          <p
+                            className={`mt-2 mb-0 text-${
+                              status.type === "success" ? "success" : "danger"
+                            }`}
+                          >
+                            {status.message}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </form>
                 </div>
