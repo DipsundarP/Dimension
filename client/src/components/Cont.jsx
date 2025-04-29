@@ -50,7 +50,7 @@ function Cont() {
       setLoading(true);
       // Ensure that your backend endpoint is correct and allows POST requests
       const response = await axios.post(
-        "http://localhost:9000/contact",
+        "https://dimension-603l.onrender.com/contact",
         formData
       );
       console.log("Response:", response.data);

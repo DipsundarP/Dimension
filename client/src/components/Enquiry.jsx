@@ -29,7 +29,7 @@ function Enquiry() {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:9000/enquiry",
+        "https://dimension-603l.onrender.com/enquiry",
         formData
       );
       console.log("Response:", response.data);

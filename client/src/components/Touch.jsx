@@ -38,7 +38,7 @@ function Touch() {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:9000/register",
+        "https://dimension-603l.onrender.com/register",
         formData
       );
       setStatus({ message: "Form submitted successfully!", type: "success" });
